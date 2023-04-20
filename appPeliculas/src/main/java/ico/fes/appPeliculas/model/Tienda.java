@@ -12,10 +12,12 @@ import java.util.HashMap;
 public class Tienda {
     private HashMap<Integer,Pelicula> stock;
     private ArrayList<Reporte> reportes;
+    private int ganancia;
 
     public Tienda() {
         stock = new HashMap<>();
         reportes = new ArrayList<>();
+        ganancia = 0;
         stock.put(1,new Pelicula("La La Land", "Musical", 128,6));
         stock.put(2,new Pelicula("Jurassic Park", "Ciencia ficción", 127,5));
         stock.put(3,new Pelicula("El Rey León", "Animación", 88,7));
@@ -25,6 +27,7 @@ public class Tienda {
 
     public boolean rentar(int key){
         if (stock.containsKey(key)){
+            ganancia = ganancia + 20;
             return stock.get(key).rentar();
         }else{
             return false;
@@ -39,12 +42,21 @@ public class Tienda {
         }
     }
 
-    public ArrayList<Boolean> cambiar(int keyA, int keyB) {
+    /*public ArrayList<Boolean> cambiar(int keyA, int keyB) {
         if (stock.containsKey(keyA) && stock.containsKey(keyB)){
             ArrayList<Boolean> cambiar = new ArrayList<>();
             cambiar.add(stock.get(keyA).regresar());
             cambiar.add(stock.get(keyB).regresar());
             return cambiar;
+        }else{
+            return false;
+        }
+    }*/
+
+    public boolean cambiar(int key, Pelicula pelicula){
+        if (stock.containsKey(key)){
+            stock.replace(key,pelicula);
+            return true;
         }else{
             return false;
         }

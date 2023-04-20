@@ -5,9 +5,7 @@ import ico.fes.appPeliculas.model.Reporte;
 import ico.fes.appPeliculas.model.Tienda;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,9 +25,14 @@ public class TiendaController {
         return new ResponseEntity<>(tienda.getStock(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/reportes")
+    @GetMapping("/reportes")
     public ResponseEntity<ArrayList<Reporte>> getReportes() {
         return new ResponseEntity<>(tienda.getReportes(), HttpStatus.OK);
+    }
+
+    @GetMapping("/ganancia")
+    public ResponseEntity<Integer> getGanancia() {
+        return new ResponseEntity<>(tienda.getGanancia(), HttpStatus.OK);
     }
 
     @GetMapping("/rentar/{key}")
@@ -44,5 +47,8 @@ public class TiendaController {
         return new ResponseEntity<>(tienda.regresar(key),HttpStatus.OK);
     }
 
-
+    @PatchMapping("/cambiar/{key}")
+    public ResponseEntity<Boolean> cambiar(@PathVariable(required = true) int key, @RequestBody Pelicula pelicula) {
+        return new ResponseEntity<>(tienda.cambiar(key, pelicula),HttpStatus.OK);
+    }
 }
