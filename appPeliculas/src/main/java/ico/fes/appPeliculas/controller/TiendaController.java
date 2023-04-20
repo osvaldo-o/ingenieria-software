@@ -25,6 +25,11 @@ public class TiendaController {
         return new ResponseEntity<>(tienda.getStock(), HttpStatus.OK);
     }
 
+    @GetMapping("/get/{key}")
+    public ResponseEntity<Pelicula> getPeliculaById(@PathVariable(required = true) int key) {
+        return new ResponseEntity<>(tienda.getStock().get(key),HttpStatus.OK);
+    }
+
     @GetMapping("/reportes")
     public ResponseEntity<ArrayList<Reporte>> getReportes() {
         return new ResponseEntity<>(tienda.getReportes(), HttpStatus.OK);
