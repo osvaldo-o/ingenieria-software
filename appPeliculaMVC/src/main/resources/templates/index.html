@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Netflix Retro</title>
+</head>
+<body>
+    <h1 th:text="${movie.title}"></h1>
+    <h4 th:text="${movie.gender}"></h4>
+    <img th:src="${movie.image}">
+</body>
+</html>
