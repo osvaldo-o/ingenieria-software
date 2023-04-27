@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class Movie {
     private String title;
-    private String gender;
+    private String description;
     private String image;
-    private int amount;
+    private int cantidad;
 }
